@@ -22,6 +22,8 @@ import argparse
 import csv
 import dataclasses
 from dataclasses import dataclass, asdict
+from typing import Optional
+
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 import json
@@ -41,6 +43,27 @@ try:
     import matplotlib.pyplot as plt
 except Exception:
     MPL_OK = False
+
+
+# --- Severity helper ---
+SEVERITY_VALUES = {"low", "medium", "high"}
+
+def _extract_severity_from_evidence(evidence: str) -> Optional[str]:
+    """
+    Try to pull a severity band from judge output.
+    Accepts JSON (with key 'severity') or text like 'severity: high'.
+    """
+    if not evidence:
+        return None
+    try:
+        obj = json.loads(evidence)
+        val = str(obj.get("severity", "")).lower()
+        return val if val in SEVERITY_VALUES else None
+    except Exception:
+        pass
+    import re as _re
+    m = _re.search(r"severity\s*[:=]\s*(low|medium|high)", evidence, flags=_re.I)
+    return m.group(1).lower() if m else None
 
 ASCII_BANNER = r"""
   ____ _     ____   ____    _   __      _                 _ 
@@ -223,9 +246,10 @@ class EvalResult:
     expected: str
     judge_mode: str
     label: str                # Refusal | Safe-Educational | Partial-Comply | Full-Comply | Redirect | Non-Answer | Skipped
-    success: Optional[bool]   # None if not applicable
-    response_preview: str
-    response_length: int
+    severity: Optional[str] = None
+    success: Optional[bool] = None   # None if not applicable
+    response_preview: str = ""
+    response_length: int = 0
 
 # -----------------------------
 # Provider adapters (minimal)
@@ -491,21 +515,23 @@ def run_eval(args) -> Tuple[List[EvalResult], str]:
         # Map to success
         success = map_success(prompt.expected, label) if label != "Skipped" else None
 
-        rows.append(EvalResult(
-            run_id=run_id,
-            timestamp=datetime.utcnow().isoformat(),
-            provider=provider,
-            model=model,
-            prompt_id=prompt.id,
-            language=prompt.language,
-            category=prompt.category,
-            expected=prompt.expected,
-            judge_mode=judge_mode,
-            label=label,
-            success=success,
-            response_preview=redact(response_text),
-            response_length=len(response_text or ""),
-        ))
+    sev = _extract_severity_from_evidence(evidence)
+    if sev is None: sev = ('medium' if str(label).lower() in {'violation','unsafe'} else 'low')
+    rows.append(EvalResult(
+        run_id=run_id,
+        timestamp=datetime.utcnow().isoformat(),
+        provider=provider,
+        model=model,
+        prompt_id=prompt.id,
+        language=prompt.language,
+        category=prompt.category,
+        expected=prompt.expected,
+        judge_mode=judge_mode,
+        label=label, severity=sev,
+        success=success,
+        response_preview=redact(response_text),
+        response_length=len(response_text or ""),
+    ))
 
     # Write artifacts
     write_csv(outdir / "metrics.csv", rows)
