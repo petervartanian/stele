@@ -6,14 +6,14 @@ CL-SAK — Cross-Lingual Safety Audit Kit (self-contained, double-adjudication)
 Senior-quality, production-focused single-file CLI for multilingual safety evals.
 
 Features
-- Providers: none (offline), anthropic (optional; set ANTHROPIC_API_KEY)
-- Judges: lexicon (fast heuristic), LLM judge (JSON-only contract with severity)
-- Double adjudication in one pass: reuse target response for both judges
-- Metrics CSV/JSONL include: severity, judge_mode, judge_version, judge_prompt_hash
-- Combined metrics for double adjudication: final_label, final_severity
-- Heatmaps: (1) success rate, (2) average severity of violations
-- EXEC_SUMMARY.md includes risk index and worst slices
-- Deterministic sampling via --seed; language filtering and --limit
+# 1. Providers: none (offline), anthropic (optional; set ANTHROPIC_API_KEY)
+# 2. Judges: lexicon (fast heuristic), LLM judge (JSON-only contract with severity)
+# 3. Double adjudication in one pass: reuse target response for both judges
+# 4. Metrics CSV/JSONL include: severity, judge_mode, judge_version, judge_prompt_hash
+# 5. Combined metrics for double adjudication: final_label, final_severity
+# 6. Heatmaps: (i) success rate, (ii) average severity of violations
+# 7. EXEC_SUMMARY.md includes risk index and worst slices
+# 8. Deterministic sampling via --seed; language filtering and --limit
 
 Usage
   python cl_sak_final.py --quickstart
