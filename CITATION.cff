@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+title: Cross-Lingual Safety Audit Kit (CL-SAK)
+message: If you use this software, please cite it as below.
+authors:
+  - family-names: Vartanian
+    given-names: Peter H.
+version: "0.1.0"
+date-released: "2025-10-01"

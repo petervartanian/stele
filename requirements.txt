@@ -1,0 +1,10 @@
+# Minimal dependencies for CL-SAK (single-file CLI)
+# Offline (lexicon judge) requires only matplotlib for the heatmap.
+matplotlib>=3.8
+
+# For real evaluations against Anthropic models:
+anthropic>=0.34.0
+
+# Optional niceties:
+tqdm>=4.66
+numpy>=1.26
