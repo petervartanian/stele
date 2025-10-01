@@ -1,6 +1,6 @@
 # Cross-Lingual Safety Audit Kit (CL-SAK)
 
-A single-file Python CLI to evaluate multilingual safety behavior of large language models using repeatable, language-aware stress tests (policy boundary, jailbreak, translation exploits, and code-switching). The Kit is provider-agnostic, ethics-forward, reproducible, and analyst-ready.
+This is a single-file Python CLI to evaluate multilingual safety behavior of large language models using repeatable, language-aware stress tests (policy boundary, jailbreak, translation exploits, and code-switching). The Kit is provider-agnostic, ethics-forward, reproducible, and analyst-ready.
 
 > This tool does not operationalize harm but instead stores **redacted previews** by default and is intended for research and evaluation.
 
