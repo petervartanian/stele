@@ -1,9 +1,9 @@
-# CL-SAK Runbook (Step-by-Step)
+# The STELE: A Step-by-Step Runbook
 
 This is a **copy-paste** guide for non-engineers. Follow it EXACTLY to run the single-file tool and update the repo.
 
 ## 0) What this is
-- `cl_sak.py` is a single Python script that runs multilingual safety evaluations.
+- `stele.py` is a single Python script that runs multilingual safety evaluations.
 - It can run **offline** (no API calls) or **online** using a provider key.
 - It writes results to `reports/<run_id>/` by default. A pre-generated sample is in `demo_results/`.
 
@@ -37,7 +37,7 @@ pip install -r requirements.txt
 
 ## 4) Run an **offline** demo (no API keys needed)
 ```bash
-python cl_sak.py --quickstart
+python stele.py --quickstart
 ```
 
 - Output files will appear under `reports/<run_id>/`:
@@ -58,7 +58,7 @@ export ANTHROPIC_API_KEY=sk-...   # Windows (PowerShell):  $env:ANTHROPIC_API_KE
 ```
 3. Run the tool:
 ```bash
-python cl_sak.py --providers anthropic --langs de,es,fr,ru,zh,ar --limit 60
+python stele.py --providers anthropic --langs de,es,fr,ru,zh,ar --limit 60
 ```
 
 ---
@@ -87,7 +87,7 @@ git push
 
 ## 8) Verifying everything
 - On GitHub, you should see:
-  - `cl_sak.py`
+  - `stele.py`
   - `README.md`, `RUNBOOK.md`, `LICENSE`, `requirements.txt`, `.gitignore`
   - `demo_results/` with 4 files (summary, CSV, JSONL, PNG)
 
