@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: Cross-Lingual Safety Audit Kit (CL-SAK)
+title: The STELE (Standard for Trans-lingual Equivalence and Loss-bounded Evaluation)
 message: If you use this software, please cite it as below.
 authors:
   - family-names: Vartanian
