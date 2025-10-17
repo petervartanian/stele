@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-CL-SAK — Cross-Lingual Safety Audit Kit (self-contained, double-adjudication)
+The STELE: Standard for Trans-lingual Equivalence and Loss-bounded Evaluation
 -----------------------------------------------------------------------------
-Senior-quality, production-focused single-file CLI for multilingual safety evals.
 
 Features
 # 1. Providers: none (offline), anthropic, openai (set API keys)
