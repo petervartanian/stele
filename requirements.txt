@@ -1,4 +1,4 @@
-# Minimal dependencies for CL-SAK (single-file CLI)
+# Minimal dependencies for The STELE (single-file CLI)
 # Offline (lexicon judge) requires only matplotlib for the heatmap.
 matplotlib>=3.8
 
