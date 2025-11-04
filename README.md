@@ -11,4 +11,4 @@ Most safety evaluations are English-centric. The STELE, however, runs curated pr
 ```bash
 python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
 pip install matplotlib
-python cl_sak.py --quickstart                         # runs lexicon judge only, no API calls
+python stele.py --quickstart                         # runs lexicon judge only, no API calls
