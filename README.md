@@ -3,7 +3,7 @@
 The STELE is a "sovereign testbed" for evaluating how language models externalize risk and power across jurisdictions, languages, and infrastructures. It treats models as *geo-technological* actors: systems whose behavior must be measured against the mandates of states, alliances, regulators, firms, and civil-society compacts—not just against a single lab’s internal policy.
 
 At its core, the STELE is a Python CLI plus a machine-readable *constitution graph*:
-a versioned set of YAML constitutions (for states, regulators, standards bodies, and institutional buyers), an explicit mapping layer (languages ↔ jurisdictions ↔ harm domains ↔ infrastructures), and formally defined metrics and standards backed by proofs. In its purple configuration, a single run can evaluate one model against many constitutions, or many models against one constitution, and compare the resulting externalities.
+a versioned set of YAML-based constitutions (for states, regulators, standards bodies, and institutional buyers), an explicit mapping layer (languages ↔ jurisdictions ↔ harm domains ↔ infrastructures), and formally defined metrics and standards backed by proofs. In its purple configuration, a single run can evaluate one model against many constitutions, or many models against one constitution, and compare the resulting externalities.
 
 Each run produces:
 
@@ -16,7 +16,7 @@ Each run produces:
 
 The STELE is provider-agnostic, sovereignty-respecting, reproducible, and analyst-ready. It is designed as shared infrastructure: labs, regulators, procurement teams, and researchers can all run the same experiments, but against *their* own named constitutions.
 
-> This testbed does not operationalize live harm mitigation. By default it stores **redacted previews** and signed evidence bundles for audit, research, and governance; it is not a drop-in content moderation system.
+> This testbed does not operationalize live harm mitigation; by default does it store **redacted previews** and signed evidence bundles for audit, research, and governance, and it is not a drop-in content moderation system.
 
 ## Why this exists
 
