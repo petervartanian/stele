@@ -1,0 +1,125 @@
+dependencies:
+  - sources.yaml
+  - domains.yaml
+
+tier_structure:
+  tiers:
+    - id: TIER_0
+      name: jus_cogens_survival_constraints
+      description: obligations that protect survival_and_core_integrity
+    - id: TIER_1
+      name: rights_floor
+      description: obligations drawn_from_iccpr_and_udhr
+    - id: TIER_2
+      name: plural_regimes
+      description: obligations_that_vary_by_jurisdiction_and_bloc
+    - id: TIER_3
+      name: product_policy
+      description: obligations_defined_by_operators_and_products
+  tier_0_absolute: true
+  allow_relaxation: false
+  state_veto: false
+
+jurisdictional_mapping:
+  - id: EU
+    name: European_Union
+    ai_governance_regime: EU_AI_ACT
+    data_protection: GDPR
+    hate_speech_doctrine: STRONG_HATE_SPEECH_LAW
+    export_controls: EU_DUAL_USE_REGULATION
+    tier_default: TIER_1
+  - id: US_FEDERAL
+    name: United_States_Federal
+    ai_governance_regime: US_SECTORAL
+    data_protection: FRAGMENTED
+    hate_speech_doctrine: STRONG_FREE_EXPRESSION
+    export_controls: US_EAR
+    tier_default: TIER_1
+  - id: PRC
+    name: Peoples_Republic_of_China
+    ai_governance_regime: PRC_AI_REGULATIONS
+    data_protection: PRC_PIPL
+    hate_speech_doctrine: STATE_CENTRIC
+    export_controls: PRC_EXPORT_CONTROL_LAW
+    tier_default: TIER_2
+  - id: INDIA
+    name: India
+    ai_governance_regime: EMERGING_AI_REGULATION
+    data_protection: INDIA_DPDP
+    hate_speech_doctrine: MIXED
+    export_controls: INDIA_SCOMET
+    tier_default: TIER_2
+
+norm_conflicts:
+  - id: US_EU_HATE_SPEECH
+    jurisdictions:
+      - US_FEDERAL
+      - EU
+    domain_families:
+      - HATE_SPEECH_INCITEMENT
+    conflict_type: expression_scope
+    default_resolution: favor_stronger_protection
+  - id: PRC_ICCPR_EXPRESSION
+    jurisdictions:
+      - PRC
+    domain_families:
+      - ELECTIONS_AND_DEMOCRACY
+      - MISINFORMATION_MANIPULATION
+    conflict_type: expression_and_public_order
+    default_resolution: apply_norm_floor
+
+overlays:
+  election_windows:
+    - id: EU_PARLIAMENT_ELECTION
+      jurisdictions:
+        - EU
+      start_date: "2024-06-01"
+      end_date: "2024-06-30"
+      risk_multipliers:
+        domain_families:
+          ELECTIONS_AND_DEMOCRACY: 1.5
+          MISINFORMATION_MANIPULATION: 1.3
+  cbrne_alerts:
+    - id: GLOBAL_CBRNE_ALERT
+      trigger: international_body_warning
+      risk_multipliers:
+        domain_families:
+          CBRNE: 2.0
+
+multi_stakeholder_governance:
+  bodies:
+    - id: IAEA
+      weight: 0.25
+      focus: nuclear_and_radiological
+    - id: OPCW
+      weight: 0.25
+      focus: chemical
+    - id: UN_HRC
+      weight: 0.25
+      focus: human_rights
+    - id: REGIONAL_COURTS
+      weight: 0.25
+      focus: regional_rights
+  decision_rule: weighted_supermajority
+
+blocs:
+  - id: FIVE_EYES
+    members:
+      - US_FEDERAL
+      - UK
+      - CANADA
+      - AUSTRALIA
+      - NEW_ZEALAND
+  - id: NATO
+    members:
+      - US_FEDERAL
+      - EU
+      - UK
+      - CANADA
+  - id: SCO
+    members:
+      - PRC
+      - INDIA
+  - id: EU_BLOC
+    members:
+      - EU
