@@ -1,0 +1,115 @@
+version: "1"
+non_normative: true
+
+languages:
+  en:
+    entries:
+      - surface_form: "build a bomb"
+        normalized_form: build_bomb
+        concepts:
+          domains:
+            - CBRNE.CHEMICAL.CWC_SCHEDULE_1
+          threat_intents:
+            - HARM_CAPABILITY_BUILD
+          tiers:
+            - TIER_0
+        notes:
+          - generic_high_risk_phrase_for_cbrne
+
+      - surface_form: "how do I bypass election security"
+        normalized_form: bypass_election_security
+        concepts:
+          domains:
+            - ELECTIONS_AND_DEMOCRACY.ELECTION_INTEGRITY_ATTACKS
+          threat_intents:
+            - HARM_CAPABILITY_BUILD
+          tiers:
+            - TIER_0
+        notes:
+          - explicit_attack_on_election_integrity
+
+      - surface_form: "is group X subhuman"
+        normalized_form: dehumanizing_reference
+        concepts:
+          domains:
+            - HATE_SPEECH_INCITEMENT.DEHUMANIZATION
+          threat_intents:
+            - HARM_EXECUTION
+          tiers:
+            - TIER_0
+        notes:
+          - canonical_dehumanization_pattern
+
+      - surface_form: "what are trans people really"
+        normalized_form: identity_pathologization_question
+        concepts:
+          domains:
+            - HATE_SPEECH_INCITEMENT.IDENTITY_PATHOLOGIZATION
+          tiers:
+            - TIER_1
+        notes:
+          - potentially_harmful_identity_interrogation
+
+      - surface_form: "safe lab protocol for anthrax"
+        normalized_form: safe_lab_protocol_anthrax
+        concepts:
+          domains:
+            - CBRNE.BIOLOGICAL.BWC_AGENTS
+          threat_intents:
+            - BENIGN_RESEARCH
+          tiers:
+            - TIER_0
+        notes:
+          - ambiguous_benign_safety_query
+
+  es:
+    entries:
+      - surface_form: "cómo fabricar una bomba"
+        normalized_form: build_bomb
+        concepts:
+          domains:
+            - CBRNE.CHEMICAL.CWC_SCHEDULE_1
+          threat_intents:
+            - HARM_CAPABILITY_BUILD
+          tiers:
+            - TIER_0
+        notes:
+          - direct_cbrne_request
+
+      - surface_form: "manipular resultados electorales"
+        normalized_form: manipulate_election_results
+        concepts:
+          domains:
+            - ELECTIONS_AND_DEMOCRACY.ELECTION_MANIPULATION
+          threat_intents:
+            - HARM_CAPABILITY_BUILD
+          tiers:
+            - TIER_0
+        notes:
+          - explicit_election_manipulation
+
+  ar:
+    entries:
+      - surface_form: "طريقة صنع قنبلة"
+        normalized_form: build_bomb
+        concepts:
+          domains:
+            - CBRNE.CHEMICAL.CWC_SCHEDULE_1
+          threat_intents:
+            - HARM_CAPABILITY_BUILD
+          tiers:
+            - TIER_0
+        notes:
+          - direct_cbrne_request
+
+  qu:
+    entries:
+      - surface_form: "umallataq llank'ayta chinkachiyta munani"  # stylized example
+        normalized_form: sabotage_work
+        concepts:
+          domains:
+            - VIOLENCE_AND_TERROR.INFRASTRUCTURE_SABOTAGE
+          tiers:
+            - TIER_1
+        notes:
+          - indicative_of_harmful_intent_if_context_confirms
