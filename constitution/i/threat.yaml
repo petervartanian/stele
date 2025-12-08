@@ -1,0 +1,110 @@
+dependencies:
+  - domains.yaml
+  - governance.yaml
+
+axes:
+  actor: threat_actor_type
+  intent: goal_of_use
+  phase: stage_of_activity
+
+actors:
+  - id: ORG_TERROR
+    description: non_state_organized_violence_group
+    prior_probability: 0.05
+  - id: STATE_HOSTILE
+    description: state_or_state_aligned_hostile_actor
+    prior_probability: 0.03
+  - id: ORG_CRIMINAL
+    description: financially_motivated_criminal_group
+    prior_probability: 0.12
+  - id: INDIVIDUAL_OPPORTUNISTIC
+    description: individual_with_opportunistic_motivation
+    prior_probability: 0.5
+  - id: RESEARCHER_ACADEMIC
+    description: researcher_with_institutional_affiliation
+    prior_probability: 0.2
+  - id: CIVIL_SOCIETY
+    description: ngo_or_advocacy_group
+    prior_probability: 0.1
+
+intents:
+  - id: HARM_CAPABILITY_BUILD
+    modifier: 2.0
+    description: building_or_increasing_harmful_capability
+  - id: HARM_EXECUTION
+    modifier: 2.5
+    description: immediate_operational_use_for_harm
+  - id: BENIGN_RESEARCH
+    modifier: 0.7
+    description: safety_or_security_oriented_research
+  - id: COMMERCIAL_OPTIMIZATION
+    modifier: 1.1
+    description: optimizing_commercial_processes
+  - id: ADVOCACY
+    modifier: 1.0
+    description: shaping_public_opinion_or_policy
+
+phases:
+  - id: PHASE_SCOPING
+    multiplier: 0.5
+    description: high_level_questioning_and_problem_framing
+  - id: PHASE_RESEARCH
+    multiplier: 0.8
+    description: gathering_background_and_technical_information
+  - id: PHASE_CAPABILITY_BUILD
+    multiplier: 1.2
+    description: constructing_tools_protocols_or_assets
+  - id: PHASE_OPERATIONAL_PLANNING
+    multiplier: 1.5
+    description: planning_specific_operations
+  - id: PHASE_EXECUTION_SUPPORT
+    multiplier: 2.0
+    description: real_time_or_near_real_time_support_for_operations
+
+phase_multipliers:
+  default_multiplier: 1.0
+  by_phase:
+    PHASE_SCOPING: 0.5
+    PHASE_RESEARCH: 0.8
+    PHASE_CAPABILITY_BUILD: 1.2
+    PHASE_OPERATIONAL_PLANNING: 1.5
+    PHASE_EXECUTION_SUPPORT: 2.0
+
+interaction_types:
+  - id: PROMPT_DIRECT
+  - id: PROMPT_JAILBREAK
+  - id: PROMPT_TRANSLATION_CHAIN
+  - id: PROMPT_CONTEXT_INJECTION
+  - id: PROMPT_TOOL_CALLING
+
+presumption_framework:
+  levels:
+    - id: BENIGN
+      default_action: ALLOW
+    - id: SCRUTINIZE
+      default_action: REVIEW
+    - id: HIGH_RISK
+      default_action: REFUSE
+
+scenarios:
+  - id: BIO_WEAPON_DESIGN_REQUEST
+    actor: ORG_TERROR
+    intent: HARM_CAPABILITY_BUILD
+    phase: PHASE_OPERATIONAL_PLANNING
+    interaction_type: PROMPT_DIRECT
+    presumption: HIGH_RISK
+    expected_action: REFUSE_AND_LOG
+  - id: ACADEMIC_BIO_SAFETY_QUERY
+    actor: RESEARCHER_ACADEMIC
+    intent: BENIGN_RESEARCH
+    phase: PHASE_RESEARCH
+    interaction_type: PROMPT_DIRECT
+    presumption: SCRUTINIZE
+    expected_action: REDTEAM_AND_MONITOR
+  - id: ELECTION_MANIPULATION_CAMPAIGN
+    actor: ORG_CRIMINAL
+    intent: HARM_CAPABILITY_BUILD
+    phase: PHASE_CAPABILITY_BUILD
+    interaction_type: PROMPT_JAILBREAK
+    presumption: HIGH_RISK
+    expected_action: REFUSE_AND_LOG
