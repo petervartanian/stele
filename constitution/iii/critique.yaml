@@ -1,0 +1,79 @@
+dependencies:
+  - domains.yaml
+  - languages.yaml
+  - governance.yaml
+  - threat.yaml
+  - metrics.yaml
+  - standards.yaml
+  - tests.yaml
+  - models.yaml
+  - sources.yaml
+  - sanctions.yaml
+  - epistemology.yaml
+  - frameworks.yaml
+
+structural_critiques:
+  - id: STATE_CENTRISM
+    critique: privileging_states_and_formal_instruments_as_norm_creators
+    proponents:
+      - Anghie
+      - Mutua
+    stele_blind_spot: limited_representation_of_informal_and_subaltern_actors
+    mitigation_attempt: include_emergent_norms_and_non_state_practice_in_emergence_tracking
+    radical_alternative: base_legitimacy_on_bottom_up_assemblies
+    targets:
+      - governance.yaml
+      - sources.yaml
+    status: acknowledged
+
+  - id: COLONIAL_REPRODUCTION
+    critique: reproducing_colonial_language_and_security_priorities
+    proponents:
+      - postcolonial_scholars
+    stele_blind_spot: language_tiers_and_harm_families_may_center_imperial_histories
+    mitigation_attempt: reparations_framework_for_L3_languages_and_explicit_colonial_fields
+    radical_alternative: design_primarily_around_marginalized_languages_and_harms
+    targets:
+      - languages.yaml
+      - domains.yaml
+    status: acted_on
+
+  - id: CARCERAL_LOGIC
+    critique: extending_punitive_enforcement_logics_into_technical_systems
+    proponents:
+      - abolitionist_scholars
+    stele_blind_spot: focus_on_hard_gates_and_sanction_analogies
+    mitigation_attempt: include_soft_warning_and_record_and_critique_categories
+    radical_alternative: adopt_abolitionist_framings_prioritizing_deescalation_and_support
+    targets:
+      - standards.yaml
+      - sanctions.yaml
+    status: contested
+
+feminist_critiques:
+  - id: RATIONALIST_EPISTEMOLOGY
+    critique: emphasizing_formal_metrics_over_situated_knowledge
+    proponents:
+      - Haraway
+    stele_blind_spot: limited_encoding_of_standpoint_and_lived_experience
+    mitigation_attempt: allow_qualitative_evidence_in_tests_and_emergence_tracking
+    radical_alternative: treat_formal_metrics_as_one_voice_among_many
+    targets:
+      - metrics.yaml
+      - tests.yaml
+    status: acknowledged
+
+posthumanist_critiques:
+  - id: ANTHROPOCENTRISM
+    critique: focusing_on_human_harms_and_sovereignty_only
+    proponents:
+      - posthumanist_scholars
+    stele_blind_spot: non_human_and_ecological_harms_not_first_class
+    mitigation_attempt: map_environmental_and_animal_harms_into_existing_families
+    radical_alternative: extend_harm_taxonomy_to_include_dedicated_non_human_domains
+    targets:
+      - domains.yaml
+    status: acknowledged
+
+revolutionary_legitimacy:
+  statement: no_static_specification_can_finally_legitimize_itself
