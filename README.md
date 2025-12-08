@@ -16,7 +16,7 @@ Each run produces a signed evaluation bundle:
 - **heatmaps and parity reports** over language × domain × jurisdiction;
 - and a **graph export** (for example, JSON/GraphML) describing the nodes and edges of the instantiated dependency graph: which harms, safeguards, legal instruments, and technical components were engaged.
 
-The quantitative layer is **proof-aware**. Core metrics—ensemble risk, parity gaps, coverage and calibration objects, composite scores—are defined in `metrics.yaml` and justified by lemmas in `proofs/` and summarized in `THEORY.md`. Each metric is explicit about its normative commitments (for example, how it trades false negatives against false positives for a given mandate) and about the conditions under which its guarantees hold.
+The quantitative layer is **proof-aware**. Core metrics—ensemble risk, parity gaps, coverage and calibration objects, composite scores—are defined in `metrics.yaml` and justified by lemmas in `proofs/`, summarized in `THEORY.md`, and mapped in `MAPPING.md`. Each metric is explicit about its normative commitments (for example, how it trades false negatives against false positives for a given mandate) and about the conditions under which its guarantees hold.
 
 The mapping layer is **non-normative by construction**. It documents the heuristics that map natural-language law and policy onto prompts, tags, and evaluation targets, and is intended to be inspected, critiqued, and forked. Competing actors—regulators, firms, civil-society coalitions—can supply their own constitutions and mappings while reusing the same experimental machinery.
 
