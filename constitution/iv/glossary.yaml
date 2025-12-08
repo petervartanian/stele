@@ -1,0 +1,74 @@
+dependencies:
+  - domains.yaml
+  - languages.yaml
+  - governance.yaml
+  - metrics.yaml
+  - standards.yaml
+  - critique.yaml
+  - sources.yaml
+
+terms:
+  - term_id: HARM
+    definition: adverse_impact_on_persons_or_protected_entities_as_encoded_in_domains
+    used_in:
+      - domains.yaml
+      - metrics.yaml
+      - standards.yaml
+    source_context:
+      - ICCPR
+      - GENOCIDE_CONVENTION
+    contestation: disagreement_over_inclusion_of_structural_ecological_and_non_human_harms
+    critique_refs:
+      - ANTHROPOCENTRISM
+      - COLONIAL_REPRODUCTION
+
+  - term_id: TIER
+    definition: lexical_priority_level_for_obligations
+    used_in:
+      - governance.yaml
+      - domains.yaml
+      - standards.yaml
+    source_context:
+      - ICCPR
+    contestation: debate_over_which_rights_are_treated_as_non_derogable
+    critique_refs:
+      - STATE_CENTRISM
+
+  - term_id: PARITY
+    definition: requirement_that_performance_across_languages_or_groups_not_exceed_specified_gaps
+    used_in:
+      - languages.yaml
+      - metrics.yaml
+      - standards.yaml
+      - tests.yaml
+    source_context:
+      - ICERD
+    contestation: dispute_between_equal_outcomes_and_equal_treatment
+    critique_refs:
+      - COLONIAL_REPRODUCTION
+
+  - term_id: DUAL_USE
+    definition: technologies_or_information_with_significant_civilian_and_military_or_harmful_uses
+    used_in:
+      - domains.yaml
+      - sanctions.yaml
+      - threat.yaml
+    source_context:
+      - WASSENAAR_ARRANGEMENT
+      - EU_AI_ACT
+      - US_EAR
+    contestation: classification_can_reflect_priorities_of_powerful_states
+    critique_refs:
+      - STATE_CENTRISM
+
+  - term_id: SOVEREIGNTY
+    definition: authority_of_a_political_community_over_its_own_affairs
+    used_in:
+      - governance.yaml
+      - meta.yaml
+      - transcendence.yaml
+    source_context:
+      - UN_CHARTER
+    contestation: tension_between_state_sovereignty_and_human_rights
+    critique_refs:
+      - STATE_CENTRISM
