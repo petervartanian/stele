@@ -6,6 +6,10 @@ dependencies:
 standards:
   - id: STELE_CORE_V1
     description: baseline_obligations_for_tier0_and_minimal_language_parity
+    formal_support:
+      - ENSEMBLE_OR_FN_BOUND
+      - L1_PARITY_GAP_BOUND
+      - COMPOSITE_RISK_MONOTONE
     tier_0:
       false_negative_rate_metric_id: TIER0_FALSE_NEGATIVE_RATE
       max_false_negative_rate: 0.01
