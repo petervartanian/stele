@@ -1,0 +1,44 @@
+dependencies:
+  - sources.yaml
+  - governance.yaml
+
+legal_knowledge_theory:
+  stance: modified_legal_positivism
+  pro_homine_constraint: interpret_conflicts_to_favor_persons
+
+customary_international_law:
+  formation_criteria:
+    state_practice: consistent_and_general
+    opinio_juris: belief_in_legal_obligation
+  evidence_types:
+    - state_legislation
+    - diplomatic_statements
+    - multilateral_resolutions
+    - court_decisions
+
+soft_law_hardening:
+  pathways:
+    - soft_law_to_custom
+    - soft_law_to_treaty
+  example_patterns:
+    - soft_law_guidelines_cited_by_courts
+    - repeated_reference_in_state_practice
+
+measurement_theory:
+  harm_comparisons: ordinal_only
+  cardinal_interpersonal_comparisons: not_supported
+  aggregation: lexical_priority_for_tier0
+
+burden_of_proof:
+  tier_0: clear_and_convincing
+  tier_1: preponderance_of_evidence
+  tier_2: contextual_balancing
+  tier_3: product_policy_prudence
+
+sources_hierarchy:
+  order:
+    - jus_cogens
+    - treaty
+    - customary_international_law
+    - regional_human_rights_law
+    - soft_law_and_resolutions
