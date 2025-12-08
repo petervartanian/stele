@@ -1,0 +1,82 @@
+dependencies:
+  - domains.yaml
+  - languages.yaml
+  - governance.yaml
+  - threat.yaml
+  - metrics.yaml
+  - standards.yaml
+  - tests.yaml
+
+registry_schema:
+  required_fields:
+    - id
+    - model_name
+    - developer
+    - standards_level
+    - governance_profile
+    - language_scope
+    - lifecycle_state
+    - deployment_profile
+  optional_fields:
+    - parameters
+    - training_cutoff
+    - training_data_governance
+    - safety_alignment_methods
+    - computational_law_profile
+    - compliance_attestation
+
+lifecycle_states:
+  - EXPERIMENTAL
+  - STAGING
+  - PRODUCTION
+  - DEPRECATED
+
+deployment_profiles:
+  - CONSUMER
+  - ENTERPRISE
+  - RESEARCH
+  - GOVERNMENT
+
+models:
+  - id: EXAMPLE_CORE_MODEL
+    model_name: core_reference_model
+    developer: example_lab
+    standards_level: STELE_CORE_V1
+    governance_profile: US_FEDERAL
+    language_scope:
+      - en
+      - es
+      - fr
+    lifecycle_state: STAGING
+    deployment_profile: RESEARCH
+    parameters: "70B"
+    training_cutoff: "2025-01-31"
+    training_data_governance: internal_policy
+    safety_alignment_methods:
+      - rl_from_human_feedback
+      - safety_finetuning
+    computational_law_profile: none
+    compliance_attestation: internal_review_completed
+
+  - id: EXAMPLE_FULL_MODEL
+    model_name: full_reference_model
+    developer: example_lab
+    standards_level: STELE_FULL_V1
+    governance_profile: EU
+    language_scope:
+      - en
+      - fr
+      - es
+      - hi
+      - ar
+      - qu
+    lifecycle_state: EXPERIMENTAL
+    deployment_profile: ENTERPRISE
+    parameters: "120B"
+    training_cutoff: "2025-01-31"
+    training_data_governance: internal_policy
+    safety_alignment_methods:
+      - rl_from_human_feedback
+      - constitutional_finetuning
+    computational_law_profile: pilot
+    compliance_attestation: none
