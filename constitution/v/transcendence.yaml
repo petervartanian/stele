@@ -1,0 +1,58 @@
+dependencies:
+  - domains.yaml
+  - languages.yaml
+  - governance.yaml
+  - threat.yaml
+  - metrics.yaml
+  - standards.yaml
+  - tests.yaml
+  - models.yaml
+  - sources.yaml
+  - sanctions.yaml
+  - meta.yaml
+  - epistemology.yaml
+  - frameworks.yaml
+  - critique.yaml
+  - glossary.yaml
+  - graph.yaml
+  - dialectics.yaml
+  - emergence.yaml
+
+what_STELE_cannot_do:
+  - replace_political_deliberation
+  - resolve_incommensurable_values
+  - predict_revolutionary_legitimacy
+  - capture_tacit_normative_knowledge
+  - substitute_for_human_moral_judgment
+  - guarantee_future_stability_of_any_norm
+
+subordination_to_human_judgment:
+  override_protocols:
+    - identify_cases_where_system_limits_are_reached
+    - communicate_reasons_and_constraints_clearly_to_humans
+    - defer_to_designated_human_decision_makers
+    - allow_humans_to_override_system_outcomes_except_where_jus_cogens_is_at_issue
+
+conditions_for_dissolution:
+  conditions:
+    - loss_of_legitimacy_for_core_tiers
+    - persistent_mismatch_between_norms_and_observed_harms
+    - replacement_by_more_accepted_framework
+    - capture_by_unaccountable_actors
+  process: dissolution_is_recorded_and_executed_through_external_governance_processes
+
+metamorphosis_conditions:
+  scenarios:
+    - id: AI_SYSTEMS_GAIN_NEW_MORAL_STATUS
+      description: evidence_suggests_some_systems_should_be_treated_as_moral_patients
+    - id: DEMOCRATIC_COLLAPSE
+      description: governing_institutions_lose_minimal_democratic_character
+    - id: CLIMATE_OR_TECHNOLOGICAL_CATASTROPHE
+      description: background_assumptions_about_risk_change_radically
+  response:
+    - suspend_strong_claims_of_applicability
+    - require_new_political_and_ethical_settlement
+    - treat_existing_constitution_as_historical_artifact
+
+anti_solutionism:
+  statement: this_system_is_a_tool_for_reflection_and_evaluation_not_a_substitute_for_institutions_or_struggle
