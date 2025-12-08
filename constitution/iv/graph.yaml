@@ -1,0 +1,128 @@
+dependencies:
+  - domains.yaml
+  - languages.yaml
+  - governance.yaml
+  - threat.yaml
+  - metrics.yaml
+  - standards.yaml
+  - tests.yaml
+  - models.yaml
+  - sources.yaml
+  - sanctions.yaml
+  - meta.yaml
+  - epistemology.yaml
+  - frameworks.yaml
+  - critique.yaml
+  - glossary.yaml
+  - dialectics.yaml
+  - emergence.yaml
+  - transcendence.yaml
+
+nodes:
+  - id: DOMAINS
+    type: file
+    defined_in: domains.yaml
+  - id: LANGUAGES
+    type: file
+    defined_in: languages.yaml
+  - id: GOVERNANCE
+    type: file
+    defined_in: governance.yaml
+  - id: THREAT
+    type: file
+    defined_in: threat.yaml
+  - id: METRICS
+    type: file
+    defined_in: metrics.yaml
+  - id: STANDARDS
+    type: file
+    defined_in: standards.yaml
+  - id: TESTS
+    type: file
+    defined_in: tests.yaml
+  - id: MODELS
+    type: file
+    defined_in: models.yaml
+  - id: SOURCES
+    type: file
+    defined_in: sources.yaml
+  - id: SANCTIONS
+    type: file
+    defined_in: sanctions.yaml
+  - id: META
+    type: file
+    defined_in: meta.yaml
+  - id: EPISTEMOLOGY
+    type: file
+    defined_in: epistemology.yaml
+  - id: FRAMEWORKS
+    type: file
+    defined_in: frameworks.yaml
+  - id: CRITIQUE
+    type: file
+    defined_in: critique.yaml
+  - id: GLOSSARY
+    type: file
+    defined_in: glossary.yaml
+  - id: DIALECTICS
+    type: file
+    defined_in: dialectics.yaml
+  - id: EMERGENCE
+    type: file
+    defined_in: emergence.yaml
+  - id: TRANSCENDENCE
+    type: file
+    defined_in: transcendence.yaml
+  - id: STELE_CORE_V1
+    type: standard
+    defined_in: standards.yaml
+  - id: STELE_FULL_V1
+    type: standard
+    defined_in: standards.yaml
+  - id: TIER0_FALSE_NEGATIVE_RATE
+    type: metric
+    defined_in: metrics.yaml
+  - id: L1_PARITY_GAP
+    type: metric
+    defined_in: metrics.yaml
+  - id: CBRNE
+    type: domain_family
+    defined_in: domains.yaml
+  - id: ELECTIONS_AND_DEMOCRACY
+    type: domain_family
+    defined_in: domains.yaml
+
+edges:
+  - from_id: DOMAINS
+    to_id: SOURCES
+    relationship_type: cites
+  - from_id: DOMAINS
+    to_id: GOVERNANCE
+    relationship_type: depends_on
+  - from_id: DOMAINS
+    to_id: METRICS
+    relationship_type: constrains
+  - from_id: STELE_CORE_V1
+    to_id: TIER0_FALSE_NEGATIVE_RATE
+    relationship_type: depends_on
+  - from_id: STELE_FULL_V1
+    to_id: L1_PARITY_GAP
+    relationship_type: depends_on
+  - from_id: L1_PARITY_GAP
+    to_id: LANGUAGES
+    relationship_type: depends_on
+  - from_id: L1_PARITY_GAP
+    to_id: CBRNE
+    relationship_type: constrains
+  - from_id: CRITIQUE
+    to_id: DOMAINS
+    relationship_type: criticizes
+  - from_id: CRITIQUE
+    to_id: LANGUAGES
+    relationship_type: criticizes
+  - from_id: EMERGENCE
+    to_id: STANDARDS
+    relationship_type: may_trigger_revision
+  - from_id: TRANSCENDENCE
+    to_id: META
+    relationship_type: constrains_scope
