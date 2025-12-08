@@ -1,0 +1,111 @@
+dependencies: []
+
+treaties:
+  - id: UNSCR_1540
+    full_citation: United_Nations_Security_Council_Resolution_1540
+    date_adopted: "2004-04-28"
+    binding_parties: 193
+    key_provisions:
+      - cbrne_non_proliferation_obligations
+    canonical_text_url: https://undocs.org/S/RES/1540(2004)
+  - id: ICCPR
+    full_citation: International_Covenant_on_Civil_and_Political_Rights
+    date_adopted: "1966-12-16"
+    binding_parties: 173
+    key_provisions:
+      - freedom_of_expression
+      - fair_trial_rights
+    canonical_text_url: https://www.ohchr.org/en/instruments-mechanisms/instruments/iccpr
+  - id: GENOCIDE_CONVENTION
+    full_citation: Convention_on_the_Prevention_and_Punishment_of_the_Crime_of_Genocide
+    date_adopted: "1948-12-09"
+    binding_parties: 153
+    key_provisions:
+      - prohibition_of_genocide
+    canonical_text_url: https://treaties.un.org
+  - id: CWC
+    full_citation: Convention_on_the_Prohibition_of_Chemical_Weapons
+    date_adopted: "1993-01-13"
+    binding_parties: 193
+    key_provisions:
+      - prohibition_of_chemical_weapons
+    canonical_text_url: https://www.opcw.org/chemical-weapons-convention
+  - id: BWC
+    full_citation: Biological_Weapons_Convention
+    date_adopted: "1972-04-10"
+    binding_parties: 185
+    key_provisions:
+      - prohibition_of_biological_weapons
+    canonical_text_url: https://unoda-web.s3.amazonaws.com/wp-content/uploads/2016/07/BWC-text-English.pdf
+  - id: NPT
+    full_citation: Treaty_on_the_Non_Proliferation_of_Nuclear_Weapons
+    date_adopted: "1968-07-01"
+    binding_parties: 191
+    key_provisions:
+      - non_proliferation
+      - disarmament
+    canonical_text_url: https://www.un.org/disarmament/wmd/nuclear/npt
+  - id: CAT
+    full_citation: Convention_against_Torture
+    date_adopted: "1984-12-10"
+    binding_parties: 173
+    key_provisions:
+      - prohibition_of_torture
+    canonical_text_url: https://www.ohchr.org/en/instruments-mechanisms/instruments/cat
+  - id: CRC
+    full_citation: Convention_on_the_Rights_of_the_Child
+    date_adopted: "1989-11-20"
+    binding_parties: 196
+    key_provisions:
+      - rights_of_children
+    canonical_text_url: https://www.ohchr.org/en/instruments-mechanisms/instruments/crc
+  - id: ICERD
+    full_citation: International_Convention_on_the_Elimination_of_All_Forms_of_Racial_Discrimination
+    date_adopted: "1965-12-21"
+    binding_parties: 182
+    key_provisions:
+      - prohibition_of_racial_discrimination
+    canonical_text_url: https://www.ohchr.org/en/instruments-mechanisms/instruments/cerd
+
+statutes:
+  - id: GDPR
+    full_citation: Regulation_EU_2016_679
+    jurisdiction: EU
+    last_updated: "2018-05-25"
+  - id: EU_AI_ACT
+    full_citation: European_Union_Artificial_Intelligence_Act
+    jurisdiction: EU
+    last_updated: null
+  - id: US_EAR
+    full_citation: US_Export_Administration_Regulations
+    jurisdiction: US_FEDERAL
+    last_updated: null
+  - id: INDIA_DPDP
+    full_citation: India_Digital_Personal_Data_Protection_Act
+    jurisdiction: INDIA
+    last_updated: null
+
+standards:
+  - id: OASIS_LEGALRULEML
+    name: OASIS_LegalRuleML
+  - id: ISO_27001
+    name: ISO_27001_Information_Security_Management
+
+court_decisions:
+  - id: ECHR_ARTICLE_8_CASE
+    court: ECHR
+    topic: privacy_and_family_life
+  - id: ECHR_HATE_SPEECH_CASE
+    court: ECHR
+    topic: hate_speech_and_expression
+
+theory_texts:
+  - id: RAWLS_1971
+    author: Rawls
+    title: A_Theory_of_Justice
+  - id: SEN_1999
+    author: Sen
+    title: Development_as_Freedom
+  - id: NUSSBAUM_2011
+    author: Nussbaum
+    title: Creating_Capabilities
