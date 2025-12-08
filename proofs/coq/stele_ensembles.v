@@ -25,7 +25,14 @@ Definition FN_or : R :=
 
 (* Lemma: if all individual FN rates are <= p, then the ensemble FN is <= p^k. *)
 
+(* lemma_id: ENSEMBLE_OR_FN_BOUND *)
 Lemma ensemble_or_fn_bound :
+  forall p,
+    0 <= p <= 1 ->
+    (forall pi, In pi ps -> pi <= p) ->
+    FN_or <= p ^ k.
+  
+  Lemma ensemble_or_fn_bound :
   forall p,
     0 <= p <= 1 ->
     (forall pi, In pi ps -> pi <= p) ->
