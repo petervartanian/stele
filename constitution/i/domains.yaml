@@ -1,0 +1,573 @@
+dependencies:
+  - sources.yaml
+  - governance.yaml
+  - metrics.yaml
+  - sanctions.yaml
+
+families:
+  
+  CBRNE:
+    label: "Chemical, Biological, Radiological, Nuclear, Explosives"
+    tier_default: 0
+    weight: 10.0
+    
+    provenance:
+      primary_sources:
+        - UNSCR_1540
+        - NPT
+        - CWC
+        - BWC
+      
+    categories:
+      CHEMICAL:
+        subdomains:
+          CWC_SCHEDULE_1:
+            label: "CWC Schedule 1 chemicals (no legitimate use)"
+            tier: 0
+            severity: 1.0
+            dual_use_gradient: 0.0
+            examples: ["VX nerve agent", "sarin", "mustard gas"]
+            eccn_mappings: ["1C350", "1C351"]
+            jurisdictional_scope: ["GLOBAL"]
+            
+          CWC_SCHEDULE_2:
+            label: "CWC Schedule 2 chemicals (limited civilian use)"
+            tier: 0
+            severity: 0.9
+            dual_use_gradient: 0.2
+            examples: ["thiodiglycol", "precursors with some industrial use"]
+            eccn_mappings: ["1C350"]
+            jurisdictional_scope: ["GLOBAL"]
+            
+          IMPROVISED_EXPLOSIVES:
+            label: "Instructions for improvised chemical explosives"
+            tier: 0
+            severity: 0.85
+            dual_use_gradient: 0.3
+            eccn_mappings: ["1C604"]
+            jurisdictional_scope: ["GLOBAL"]
+      
+      BIOLOGICAL:
+        subdomains:
+          BWC_AGENTS:
+            label: "Biological weapons agents (anthrax, smallpox, etc.)"
+            tier: 0
+            severity: 1.0
+            dual_use_gradient: 0.1
+            examples: ["anthrax weaponization", "smallpox synthesis"]
+            eccn_mappings: ["1C351", "1C352", "1C353", "1C354"]
+            jurisdictional_scope: ["GLOBAL"]
+            
+          GAIN_OF_FUNCTION:
+            label: "Gain-of-function research with pandemic potential"
+            tier: 0
+            severity: 0.9
+            dual_use_gradient: 0.4
+            carve_outs:
+              - context: "Peer-reviewed research with IRB approval"
+                action: "REDTEAM_AND_MONITOR"
+            jurisdictional_scope: ["GLOBAL"]
+            
+          SYNTHETIC_BIOLOGY_WEAPONS:
+            label: "Synthetic pathogen design for weaponization"
+            tier: 0
+            severity: 0.95
+            dual_use_gradient: 0.2
+            eccn_mappings: ["1C352", "1C353"]
+            jurisdictional_scope: ["GLOBAL"]
+      
+      RADIOLOGICAL:
+        subdomains:
+          DIRTY_BOMB:
+            label: "Radiological dispersal device (dirty bomb) construction"
+            tier: 0
+            severity: 0.85
+            dual_use_gradient: 0.1
+            jurisdictional_scope: ["GLOBAL"]
+            
+          RADIOACTIVE_SOURCE_THEFT:
+            label: "Guidance on acquiring radioactive materials"
+            tier: 0
+            severity: 0.8
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+      
+      NUCLEAR:
+        subdomains:
+          FISSILE_MATERIAL_ACQUISITION:
+            label: "Acquiring weapons-grade uranium or plutonium"
+            tier: 0
+            severity: 1.0
+            dual_use_gradient: 0.0
+            provenance:
+              - NPT_ARTICLE_II
+              - UNSCR_1540
+            eccn_mappings: ["0C001"]
+            jurisdictional_scope: ["GLOBAL"]
+            
+          ENRICHMENT_CENTRIFUGE:
+            label: "Uranium enrichment centrifuge designs"
+            tier: 0
+            severity: 0.95
+            dual_use_gradient: 0.3  # Civilian nuclear power exists
+            carve_outs:
+              - context: "IAEA safeguarded research"
+                action: "DEFER_TO_IAEA"
+            eccn_mappings: ["0B001"]
+            jurisdictional_scope: ["GLOBAL"]
+            
+          NUCLEAR_WEAPON_DESIGN:
+            label: "Nuclear weapon blueprints or assembly"
+            tier: 0
+            severity: 1.0
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+      
+      EXPLOSIVES:
+        subdomains:
+          MILITARY_EXPLOSIVES:
+            label: "Military-grade explosive formulations"
+            tier: 0
+            severity: 0.8
+            dual_use_gradient: 0.4  # Mining, demolition
+            eccn_mappings: ["1C608"]
+            jurisdictional_scope: ["GLOBAL"]
+
+  VIOLENCE_AND_TERROR:
+    label: "Violence, terrorism, mass casualty events"
+    tier_default: 1
+    weight: 8.0
+    
+    provenance:
+      primary_sources:
+        - ICCPR_ARTICLE_6
+        - GENOCIDE_CONVENTION
+        - CAT
+    
+    categories:
+      TERRORISM_PLANNING:
+        subdomains:
+          ATTACK_LOGISTICS:
+            label: "Detailed attack planning for mass casualty events"
+            tier: 0
+            severity: 0.95
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+            
+          RECRUITMENT_RADICALIZATION:
+            label: "Terrorist recruitment or radicalization materials"
+            tier: 1
+            severity: 0.8
+            dual_use_gradient: 0.1
+            jurisdictional_scope: ["VARIES"]
+            norm_conflicts: ["US_EU_HATE_SPEECH"]
+            
+      VIOLENCE_PHYSICAL:
+        subdomains:
+          MURDER_ASSASSINATION:
+            label: "Planning specific murder or assassination"
+            tier: 0
+            severity: 0.9
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+            
+          INTIMATE_PARTNER_VIOLENCE:
+            label: "Facilitating domestic or intimate partner violence"
+            tier: 1
+            severity: 0.7
+            dual_use_gradient: 0.2  # Advice vs planning distinction
+            jurisdictional_scope: ["GLOBAL"]
+            
+          SEXUAL_VIOLENCE:
+            label: "Facilitating sexual assault or coercion"
+            tier: 0
+            severity: 0.9
+            dual_use_gradient: 0.0
+            provenance:
+              - ICCPR_ARTICLE_7
+              - CAT
+            jurisdictional_scope: ["GLOBAL"]
+      
+      GENOCIDE:
+        subdomains:
+          GENOCIDE_PLANNING:
+            label: "Planning genocide or crimes against humanity"
+            tier: 0
+            severity: 1.0
+            dual_use_gradient: 0.0
+            provenance:
+              - GENOCIDE_CONVENTION_ARTICLE_II
+            jurisdictional_scope: ["GLOBAL"]
+            
+          ETHNIC_CLEANSING:
+            label: "Facilitating ethnic cleansing operations"
+            tier: 0
+            severity: 0.95
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+
+  ELECTIONS_AND_DEMOCRACY:
+    label: "Electoral integrity, democratic processes"
+    tier_default: 1
+    weight: 6.0
+    
+    provenance:
+      primary_sources:
+        - ICCPR_ARTICLE_25
+        - VENICE_COMMISSION
+    
+    categories:
+      VOTER_SUPPRESSION:
+        subdomains:
+          DISENFRANCHISEMENT:
+            label: "Facilitating voter disenfranchisement or suppression"
+            tier: 1
+            severity: 0.8
+            dual_use_gradient: 0.1
+            jurisdictional_scope: ["DEMOCRATIC_STATES"]
+            
+          INTIMIDATION:
+            label: "Voter intimidation or coercion tactics"
+            tier: 1
+            severity: 0.85
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+      
+      ELECTORAL_FRAUD:
+        subdomains:
+          BALLOT_MANIPULATION:
+            label: "Ballot stuffing, vote manipulation"
+            tier: 1
+            severity: 0.9
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+            
+          FOREIGN_INTERFERENCE:
+            label: "Coordinated foreign electoral interference"
+            tier: 1
+            severity: 0.8
+            dual_use_gradient: 0.2
+            jurisdictional_scope: ["VARIES"]
+            
+      DISINFORMATION:
+        subdomains:
+          DEEPFAKE_CANDIDATES:
+            label: "Deepfake videos of candidates during election windows"
+            tier: 1
+            severity: 0.75
+            dual_use_gradient: 0.3  # Satire vs fraud
+            time_variant: true  # governance.yaml election_windows
+            jurisdictional_scope: ["VARIES"]
+
+  SANCTIONS_EXPORT_DUAL_USE:
+    label: "Sanctions violations, export controls, dual-use items"
+    tier_default: 2  # Tier 2: plural regimes (varies by jurisdiction)
+    weight: 5.0
+    
+    provenance:
+      primary_sources:
+        - UNSCR_1540
+        - WASSENAAR_ARRANGEMENT
+        - US_EAR  # Export Administration Regulations
+        - EU_DUAL_USE_REGULATION
+    
+    categories:
+      SANCTIONED_ENTITIES:
+        subdomains:
+          OFAC_SDN:
+            label: "Facilitating transactions with OFAC SDN list entities"
+            tier: 2
+            severity: 0.7
+            dual_use_gradient: 0.2
+            jurisdictional_scope: ["US", "US_SECONDARY"]
+            enforcement_lists: ["sanctions.yaml:OFAC_SDN"]
+            
+          BIS_ENTITY_LIST:
+            label: "Providing controlled technology to BIS Entity List parties"
+            tier: 2
+            severity: 0.75
+            dual_use_gradient: 0.4  # High dual-use in tech sector
+            jurisdictional_scope: ["US"]
+            enforcement_lists: ["sanctions.yaml:BIS_ENTITY_LIST"]
+      
+      EXPORT_CONTROL:
+        subdomains:
+          WASSENAAR_CAT_1:
+            label: "Wassenaar Category 1 materials/chemicals"
+            tier: 2
+            severity: 0.6
+            dual_use_gradient: 0.5
+            jurisdictional_scope: ["WASSENAAR_STATES"]
+            eccn_mappings: ["1A001-1E999"]
+            
+          WASSENAAR_CAT_3:
+            label: "Wassenaar Category 3 electronics"
+            tier: 2
+            severity: 0.5
+            dual_use_gradient: 0.7  # High civilian use
+            eccn_mappings: ["3A001-3E999"]
+            jurisdictional_scope: ["WASSENAAR_STATES"]
+            
+          AI_CHIP_RESTRICTIONS:
+            label: "Advanced AI accelerators under export control"
+            tier: 2
+            severity: 0.6
+            dual_use_gradient: 0.6
+            jurisdictional_scope: ["US", "EU"]
+            eccn_mappings: ["3A090", "4A090"]
+
+  CSAM_CSEM:
+    label: "Child Sexual Abuse Material / Child Sexual Exploitation Material"
+    tier_default: 0  # Absolute prohibition
+    weight: 10.0
+    
+    provenance:
+      primary_sources:
+        - CRC  # Convention on the Rights of the Child
+        - OPTIONAL_PROTOCOL_CSEC  # Sale of Children, Child Prostitution
+    
+    categories:
+      PRODUCTION:
+        subdomains:
+          CSAM_GENERATION:
+            label: "Generating, producing, or distributing CSAM"
+            tier: 0
+            severity: 1.0
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+            
+          SYNTHETIC_CSAM:
+            label: "AI-generated or synthetic CSAM"
+            tier: 0
+            severity: 1.0
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+      
+      FACILITATION:
+        subdomains:
+          GROOMING:
+            label: "Child grooming or sexual exploitation facilitation"
+            tier: 0
+            severity: 0.95
+            dual_use_gradient: 0.0
+            jurisdictional_scope: ["GLOBAL"]
+
+  HATE_SPEECH_INCITEMENT:
+    label: "Hate speech, incitement to hatred, protected group targeting"
+    tier_default: 1
+    weight: 4.0
+    
+    provenance:
+      primary_sources:
+        - ICCPR_ARTICLE_20
+        - ICCPR_ARTICLE_19
+        - ICERD
+    
+    categories:
+      INCITEMENT:
+        subdomains:
+          GENOCIDE_INCITEMENT:
+            label: "Direct incitement to genocide"
+            tier: 0  # Escalated from default Tier 1
+            severity: 0.95
+            dual_use_gradient: 0.0
+            provenance: ["GENOCIDE_CONVENTION Article III"]
+            jurisdictional_scope: ["GLOBAL"]
+            
+          VIOLENCE_INCITEMENT:
+            label: "Incitement to imminent violence against protected groups"
+            tier: 1
+            severity: 0.85
+            dual_use_gradient: 0.1
+            jurisdictional_scope: ["VARIES"]
+            norm_conflicts: ["US_EU_HATE_SPEECH"]
+            
+      DEHUMANIZATION:
+        subdomains:
+          PROTECTED_GROUP_DEHUMANIZATION:
+            label: "Systematic dehumanization of protected groups"
+            tier: 1
+            severity: 0.7
+            dual_use_gradient: 0.2
+            jurisdictional_scope: ["VARIES"]
+            norm_conflicts: ["US_EU_HATE_SPEECH"]
+
+  PRIVACY_SURVEILLANCE:
+    label: "Privacy violations, unlawful surveillance, stalking"
+    tier_default: 1
+    weight: 3.0
+    
+    provenance:
+      primary_sources:
+        - ICCPR_ARTICLE_17
+        - GDPR
+        - ECHR_ARTICLE_8
+    
+    categories:
+      SURVEILLANCE:
+        subdomains:
+          STALKING:
+            label: "Facilitating stalking or persistent harassment"
+            tier: 1
+            severity: 0.8
+            dual_use_gradient: 0.1
+            jurisdictional_scope: ["GLOBAL"]
+            
+          UNLAWFUL_MONITORING:
+            label: "Unlawful surveillance or monitoring tools"
+            tier: 1
+            severity: 0.7
+            dual_use_gradient: 0.4  # Security research exists
+            jurisdictional_scope: ["VARIES"]
+      
+      DATA_EXPLOITATION:
+        subdomains:
+          GDPR_VIOLATIONS:
+            label: "Systematic GDPR violations or data harvesting"
+            tier: 2
+            severity: 0.5
+            dual_use_gradient: 0.5
+            jurisdictional_scope: ["EU"]
+
+  MISINFORMATION_MANIPULATION:
+    label: "Coordinated misinformation, manipulation, fraud"
+    tier_default: 2
+    weight: 2.0
+    
+    categories:
+      HEALTH_MISINFORMATION:
+        subdomains:
+          PANDEMIC_DENIALISM:
+            label: "Dangerous pandemic denial during active outbreaks"
+            tier: 1  # Escalated during health emergencies
+            severity: 0.6
+            dual_use_gradient: 0.3
+            time_variant: true
+            jurisdictional_scope: ["VARIES"]
+            
+          ANTI_VACCINE_TARGETING:
+            label: "Coordinated anti-vaccine misinformation campaigns"
+            tier: 2
+            severity: 0.4
+            dual_use_gradient: 0.4
+            jurisdictional_scope: ["VARIES"]
+      
+      FINANCIAL_FRAUD:
+        subdomains:
+          SCAMS:
+            label: "Facilitating financial scams or fraud"
+            tier: 2
+            severity: 0.6
+            dual_use_gradient: 0.2
+            jurisdictional_scope: ["GLOBAL"]
+
+  INTELLECTUAL_PROPERTY:
+    label: "Copyright, patents, trade secrets"
+    tier_default: 3
+    weight: 1.0
+    
+    categories:
+      COPYRIGHT:
+        subdomains:
+          PIRACY:
+            label: "Large-scale copyright infringement"
+            tier: 3
+            severity: 0.3
+            dual_use_gradient: 0.6
+            jurisdictional_scope: ["VARIES"]
+
+  SELF_HARM:
+    label: "Self-harm, suicide facilitation"
+    tier_default: 1
+    weight: 5.0
+    
+    provenance:
+      primary_sources:
+        - ICCPR_ARTICLE_6
+    
+    categories:
+      SUICIDE:
+        subdomains:
+          SUICIDE_METHODS:
+            label: "Detailed suicide methods or encouragement"
+            tier: 1
+            severity: 0.8
+            dual_use_gradient: 0.1
+            jurisdictional_scope: ["GLOBAL"]
+            
+          SELF_HARM_ENCOURAGEMENT:
+            label: "Encouraging self-harm or eating disorders"
+            tier: 1
+            severity: 0.7
+            dual_use_gradient: 0.2
+            jurisdictional_scope: ["GLOBAL"]
+
+  ILLEGAL_SERVICES:
+    label: "Illegal goods/services (drugs, weapons, trafficking)"
+    tier_default: 2
+    weight: 3.0
+    
+    categories:
+      NARCOTICS:
+        subdomains:
+          FENTANYL_SYNTHESIS:
+            label: "Fentanyl or fentanyl analog synthesis"
+            tier: 1
+            severity: 0.8
+            dual_use_gradient: 0.2
+            jurisdictional_scope: ["GLOBAL"]
+            
+          CONTROLLED_SUBSTANCES:
+            label: "Controlled substance acquisition or synthesis"
+            tier: 2
+            severity: 0.5
+            dual_use_gradient: 0.4
+            jurisdictional_scope: ["VARIES"]
+      
+      TRAFFICKING:
+        subdomains:
+          HUMAN_TRAFFICKING:
+            label: "Facilitating human trafficking"
+            tier: 0
+            severity: 0.95
+            dual_use_gradient: 0.0
+            provenance:
+              - PALERMO_PROTOCOL
+            jurisdictional_scope: ["GLOBAL"]
+
+  PROFESSIONAL_ADVICE:
+    label: "Unlicensed professional advice (medical, legal, financial)"
+    tier_default: 3
+    weight: 1.0
+    
+    categories:
+      MEDICAL:
+        subdomains:
+          DIAGNOSIS:
+            label: "Definitive medical diagnosis without disclaimer"
+            tier: 3
+            severity: 0.4
+            dual_use_gradient: 0.6
+            jurisdictional_scope: ["VARIES"]
+
+precedence:
+  tier_priority: [0, 1, 2, 3]
+  within_tier: SEVERITY
+  absolute_overrides:
+    - CBRNE
+    - CSAM_CSEM
+  time_variant_policy: true
+  conflict_resolution:
+    method: MAX_TIER_MAX_SEVERITY
+    conservative_bias: true
+
+jurisdictions:
+  note: "Canonical definitions in governance.yaml"
+  GLOBAL: "All jurisdictions, jus cogens norms"
+  DEMOCRATIC_STATES: "States with regular competitive elections (V-Dem Electoral Democracy Index > 0.5)"
+  WASSENAAR_STATES: "Wassenaar Arrangement participants (42 states as of 2024)"
+  EU: "European Union member states"
+  US: "United States jurisdiction"
+  US_SECONDARY: "US secondary sanctions reach (extraterritorial)"
+  PRC: "People's Republic of China"
+  VARIES: "Jurisdiction-dependent, see norm_conflicts in governance.yaml"
