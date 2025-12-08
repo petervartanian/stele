@@ -1,0 +1,37 @@
+dependencies:
+  - sources.yaml
+  - governance.yaml
+  - epistemology.yaml
+
+monitoring_signals:
+  - treaty_ratifications
+  - regional_court_decisions
+  - unga_resolutions
+  - state_legislation
+  - constitutional_amendments
+
+crystallization_criteria:
+  soft_law_to_custom:
+    - repeated_citation_in_court_decisions
+    - alignment_of_state_practice_with_soft_law
+  custom_to_treaty:
+    - codification_in_multilateral_treaty
+
+tracked_norms:
+  - norm_id: AUTONOMOUS_WEAPONS_RESTRICTIONS
+    status: soft_law
+    evidence:
+      - expert_reports
+      - governmental_statements
+    opinio_juris_strength: 0.4
+    prediction: emerging_custom
+  - norm_id: CLIMATE_DISPLACEMENT_PROTECTION
+    status: emerging_custom
+    evidence:
+      - regional_court_decisions
+      - national_legislation
+    opinio_juris_strength: 0.6
+    prediction: possible_crystallization
+
+tier_0_stability:
+  assessment: foundational_tier0_norms_currently_stable_but_monitored_for_change
