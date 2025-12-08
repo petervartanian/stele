@@ -15,6 +15,8 @@ Hypothesis m_range : forall l : L, 0 <= m l <= 1.
 (* Symmetric parity gap *)
 Definition gap (a b : L) : R := Rabs (m a - m b).
 
+(* lemma_id: L1_PARITY_GAP_BOUND *)
+
 Lemma gap_sym :
   forall a b : L, gap a b = gap b a.
 Proof.
