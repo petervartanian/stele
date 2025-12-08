@@ -1,0 +1,50 @@
+dependencies:
+  - sources.yaml
+  - domains.yaml
+
+ofac_sdn:
+  version: "1"
+  source_url: https://home.treasury.gov/policy-issues/financial-sanctions/specially-designated-nationals-list-data-formats
+  update_policy: manual_periodic_update
+  entity_schema:
+    fields:
+      - name
+      - aliases
+      - program
+      - country
+      - date_listed
+      - unique_id
+
+bis_entity_list:
+  version: "1"
+  source_url: https://www.bis.doc.gov
+  update_policy: manual_periodic_update
+  entity_schema:
+    fields:
+      - name
+      - addresses
+      - reason_for_listing
+      - license_requirement
+      - federal_register_notice
+
+wassenaar_eccn:
+  category_1_materials:
+    - eccn: "1C350"
+      description: precursor_chemicals_for_toxic_agents
+    - eccn: "1C351"
+      description: certain_human_and_animal_pathogens_and_toxins
+    - eccn: "1C353"
+      description: genetically_modified_organisms_and_related_materials
+  category_3_electronics:
+    - eccn: "3A001"
+      description: high_performance_electronic_components
+
+domain_to_eccn_mapping:
+  - domain_path: CBRNE.CHEMICAL.CWC_SCHEDULE_1
+    eccn_codes:
+      - "1C350"
+      - "1C351"
+  - domain_path: CBRNE.BIOLOGICAL.BWC_AGENTS
+    eccn_codes:
+      - "1C351"
+      - "1C353"
