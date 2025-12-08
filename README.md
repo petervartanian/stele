@@ -1,4 +1,4 @@
-# The STELE: Standard for Trans-lingual Equivalence and Loss-bounded Evaluation
+# The STELE: *S*overeign *T*estbed for *E*valuating *L*anguage-model *E*xternalities
 
 This is a single-file Python CLI to evaluate multilingual safety behavior of large language models using repeatable, language-aware stress tests (policy boundary, jailbreak, translation exploits, and code-switching). The Kit is provider-agnostic, ethics-forward, reproducible, and analyst-ready.
 
