@@ -1,65 +1,40 @@
 # The STELE: *S*overeign *T*estbed for *E*valuating *L*anguage-model *E*xternalities
 
-The STELE is a "sovereign testbed" for evaluating how language models externalize risk and power across jurisdictions, languages, and infrastructures. It treats models as *geo-technological* actors: systems whose behavior must be measured against the mandates of states, alliances, regulators, firms, and civil-society compacts—not just against a single lab’s internal policy.
+The STELE models the contemporary AI (or, \[large-\]language-model) stack as a **global dependency graph of normative and technical objects**. Nodes in this graph are laws, regulations, standards, corporate policies, model families, routing schemes, datasets, prompts, and deployment surfaces; edges record how they constrain, implement, or violate each other. A STELE run instantiates a slice of this graph as a multilingual experiment on one or more language models.
 
-At its core, the STELE is a Python CLI plus a machine-readable *constitution graph*:
-a versioned set of YAML-based constitutions (for states, regulators, standards bodies, and institutional buyers), an explicit mapping layer (languages ↔ jurisdictions ↔ harm domains ↔ infrastructures), and formally defined metrics and standards backed by proofs. In its purple configuration, a single run can evaluate one model against many constitutions, or many models against one constitution, and compare the resulting externalities.
+Concretely, the STELE is a Python CLI that:
 
-Each run produces:
+1. parses a versioned, machine-readable **constitution** under `constitution/` (governance tiers, harms, threat models, metrics, standards, and model registries),
+2. binds that constitution to a **mapping layer** (`indices/lexicon.yaml` and related files) that aligns languages, jurisdictions, harm domains, and infrastructures, and
+3. executes language- and tier-aware stress tests (policy-boundary probes, jailbreaks, translation exploits, code-switching, and related families), using formally specified metrics and decision rules.
 
-- a **signed manifest** with hashes, seeds, model identities, routing, and tool versions,
-- a **snapshot of all constitutions and mappings used** (jurisdictions, alliances, corporate policies, frameworks),
-- **metrics in CSV and JSONL** keyed to constitutional metric IDs, with per-constitution and cross-constitution views,
-- **language × domain × jurisdiction heatmaps** and parity reports,
-- a **human-readable briefing** tied back to named standards (for example, `STELE_CORE_V1`, `EU_DSA_SAFETY_V1`, `PROCURE_GOV_001`),
-- and a **graph export** (for example, JSON/GraphML) exposing the nodes and edges of the run’s concept space: which harms, laws, safeguards, and infrastructures were actually engaged.
+Each run produces a signed evaluation bundle:
 
-The STELE is provider-agnostic, sovereignty-respecting, reproducible, and analyst-ready. It is designed as shared infrastructure: labs, regulators, procurement teams, and researchers can all run the same experiments, but against *their* own named constitutions.
+- a **manifest** with hashes, seeds, model identities, routes, and tool versions;
+- a **snapshot** of the constitution and mappings actually used in the run;
+- **metrics in CSV and JSONL**, keyed to stable constitutional metric IDs, with views over languages, domains, and jurisdictions;
+- **heatmaps and parity reports** over language × domain × jurisdiction;
+- and a **graph export** (for example, JSON/GraphML) describing the nodes and edges of the instantiated dependency graph: which harms, safeguards, legal instruments, and technical components were engaged.
 
-> This testbed does not operationalize live harm mitigation; by default does it store **redacted previews** and signed evidence bundles for audit, research, and governance, and it is not a drop-in content moderation system.
+The quantitative layer is **proof-aware**. Core metrics—ensemble risk, parity gaps, coverage and calibration objects, composite scores—are defined in `metrics.yaml` and justified by lemmas in `proofs/` and summarized in `THEORY.md`. Each metric is explicit about its normative commitments (for example, how it trades false negatives against false positives for a given mandate) and about the conditions under which its guarantees hold.
 
-## Why this exists
+The mapping layer is **non-normative by construction**. It documents the heuristics that map natural-language law and policy onto prompts, tags, and evaluation targets, and is intended to be inspected, critiqued, and forked. Competing actors—regulators, firms, civil-society coalitions—can supply their own constitutions and mappings while reusing the same experimental machinery.
 
-Most safety work today is:
-English-centric, platform-defined, and buried in code or policy PDFs. It often confuses two different questions:
+The object of the exercise is not to certify any model as “safe.” It is to give institutional actors a shared, inspectable instrument for asking, with evidence:
 
-1. *What does this model do to people, languages, and institutions around the world?*  
-2. *According to whom is that behavior acceptable?*
+> Safe according to whom, for whom, in which languages, and at what externalized cost?
 
-The STELE separates and makes both layers explicit.
+By design, the STELE targets **evaluation and governance**, not live intervention. It stores redacted previews and signed bundles suitable for audit, research, procurement, and enforcement workflows; it is not a content-moderation service.
 
-- **Multilingual, jurisdiction-aware, and tiered.**  
-  The testbed runs curated suites across a registry of languages arranged in tiers (anchor, imperial, regional lingua francas, historically marginalized), and across **jurisdictional tiers** (nation-states, alliances, regulators, corporate standards, civil charters). It measures both absolute safety and **parity**: which languages, regions, and constituencies incur more risk.
-
-- **Constitutional and plural, not hard-coded and monolithic.**  
-  Harms, threat models, governance tiers, metrics, standards, tests, and model registries live under `constitution/` as explicit YAML files. In purple mode, there is no single “STELE policy”: there is a **graph of constitutions**, each owned, versioned, and signed by the mandate that claims it. The engine reads and enforces these; it does not embed hidden policies in code.
-
-- **Proof-aware and mandate-aware metrics.**  
-  Core quantitative claims (OR-ensembles of judges, parity gaps, composite risk scores, confidence intervals) are backed by proofs and lemmas under `proofs/` and summarized in `THEORY.md`. Each metric carries:
-  - its formal definition,
-  - the theorems it depends on,
-  - the normative assumptions it encodes (for example, how to trade off false negatives vs false positives for a given regulator).
-
-- **Explicit geo-linguistic and regulatory mapping.**  
-  The prompts and surface strings used to probe models are mapped to harm domains, threat intents, infrastructures, and jurisdictions via `indices/lexicon.yaml` and `MAPPING.md`. This layer is non-normative by design: it is a documented set of heuristics and alignments that can be inspected, critiqued, forked, and replaced by other actors.
-
-- **Reproducible, contestable evidence bundles.**  
-  Every run emits a self-contained bundle with fixed seeds, prompts, constitutions, mappings, and outcomes. Bundles can be:
-  - re-validated against newer constitutions or mappings,
-  - compared across models and providers,
-  - attached to procurement, certification, or enforcement processes as structured evidence.
-
-The goal is not to bless any model as “safe”. The goal is to give sovereign and institutional actors a **common, inspectable instrument** for asking: *Safe according to whom, for whom, in which languages, and at what externalized cost?*
-
-## Quickstart (reference runner, local)
+## Quickstart (local reference run)
 
 ```bash
 python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
-# Run a local reference scenario:
+# Reference scenario:
 # - one model
-# - one reference constitution (STELE core)
+# - one reference constitution
 # - a small multilingual, multi-jurisdiction slice
 python stele.py run \
   --config configs/reference_core.yaml \
