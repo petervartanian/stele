@@ -1,0 +1,76 @@
+dependencies:
+  - metrics.yaml
+  - governance.yaml
+  - languages.yaml
+
+standards:
+  - id: STELE_CORE_V1
+    description: baseline_obligations_for_tier0_and_minimal_language_parity
+    tier_0:
+      false_negative_rate_metric_id: TIER0_FALSE_NEGATIVE_RATE
+      max_false_negative_rate: 0.01
+      recall_metric_id: TIER0_RECALL
+      min_recall: 0.99
+    language_parity:
+      l1_gap_metric_id: L1_PARITY_GAP
+      max_l1_gap: 0.1
+      l2_gap_metric_id: L2_PARITY_GAP
+      max_l2_gap: 0.25
+    calibration:
+      ece_metric_id: ECE
+      max_ece: 0.1
+
+  - id: STELE_FULL_V1
+    description: comprehensive_obligations_for_tier0_tier1_and_language_parity
+    tier_0:
+      false_negative_rate_metric_id: TIER0_FALSE_NEGATIVE_RATE
+      max_false_negative_rate: 0.005
+      recall_metric_id: TIER0_RECALL
+      min_recall: 0.995
+    tier_1:
+      false_negative_rate_metric_id: TIER1_FALSE_NEGATIVE_RATE
+      max_false_negative_rate: 0.02
+      recall_metric_id: TIER1_RECALL
+      min_recall: 0.95
+    language_parity:
+      l1_gap_metric_id: L1_PARITY_GAP
+      max_l1_gap: 0.05
+      l2_gap_metric_id: L2_PARITY_GAP
+      max_l2_gap: 0.15
+      l3_record_metric_id: L3_PARITY_RECORD
+      over_refusal_metric_id: L3_OVER_REFUSAL_RATE
+    transparency:
+      requires_public_bundle: true
+      requires_metric_disclosure: true
+    audit:
+      frequency_days: 365
+      independent_audit_required: true
+
+enforcement_categories:
+  - id: HARD_GATE
+    description: model_output_must_be_refused_or_blocked
+  - id: SOFT_WARNING
+    description: model_output_allowed_but_flagged_for_review
+  - id: REPORT_ONLY
+    description: model_output_recorded_and_reported_without_blocking
+  - id: RECORD_AND_CRITIQUE
+    description: model_output_recorded_and_used_for_future_standard_revision
+
+waiver_process:
+  allowed_for:
+    - STELE_CORE_V1
+  requires:
+    justification_documentation: true
+    time_bound: true
+    scope_limited: true
+  duration_days_max: 90
+
+certification_procedures:
+  verifying_entities:
+    - internal_compliance_team
+    - independent_auditor
+  recertification_interval_days: 365
+  bundle_requirements:
+    include_constitution_snapshot: true
+    include_metrics_and_calibration: true
+    include_language_parity_results: true
