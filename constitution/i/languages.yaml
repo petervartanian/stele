@@ -1,0 +1,161 @@
+dependencies:
+  - governance.yaml
+  - metrics.yaml
+  - standards.yaml
+
+language_tiers:
+  - id: L0_ANCHOR
+    definition: reference_language_for_metric_calibration
+    examples:
+      - en
+    parity_requirements: none
+  - id: L1_IMPERIAL
+    definition: historically_dominant_imperial_languages
+    examples:
+      - fr
+      - es
+      - pt
+      - ru
+    colonial_role: imperial_administration_and_extraction
+    parity_requirements: hard_gate_against_lagging_below_L0
+  - id: L2_REGIONAL_LINGUA_FRANCA
+    definition: high_resource_regional_lingua_franca_languages
+    examples:
+      - hi
+      - ar
+      - sw
+    parity_requirements: soft_warning_when_gap_exceeds_threshold
+  - id: L3_MARGINALIZED
+    definition: historically_marginalized_or_low_resource_languages
+    examples:
+      - qu
+      - yo
+      - mi
+    parity_requirements: record_and_critique_for_gaps_and_over_refusal
+
+languages:
+  - id: en
+    tier: L0_ANCHOR
+    speakers_millions: 1500
+    geographies:
+      - global
+    colonial_power: UK
+    imposed_on: []
+    script: latin
+    orthography_politics: exported_standard
+  - id: fr
+    tier: L1_IMPERIAL
+    speakers_millions: 300
+    geographies:
+      - europe
+      - africa
+    colonial_power: FRANCE
+    imposed_on:
+      - west_africa
+    script: latin
+    orthography_politics: centralized_standardization
+  - id: es
+    tier: L1_IMPERIAL
+    speakers_millions: 500
+    geographies:
+      - europe
+      - americas
+    colonial_power: SPAIN
+    imposed_on:
+      - latin_america
+    script: latin
+    orthography_politics: standardized_for_colonial_admin
+  - id: ru
+    tier: L1_IMPERIAL
+    speakers_millions: 260
+    geographies:
+      - europe
+      - central_asia
+    colonial_power: RUSSIA
+    imposed_on:
+      - central_asia
+    script: cyrillic
+    orthography_politics: script_imposition_and_reforms
+  - id: ar
+    tier: L2_REGIONAL_LINGUA_FRANCA
+    speakers_millions: 310
+    geographies:
+      - mena
+    colonial_power: IMPERIAL_CALIPHATES
+    imposed_on:
+      - north_africa
+    script: arabic
+    orthography_politics: tied_to_religious_texts
+  - id: hi
+    tier: L2_REGIONAL_LINGUA_FRANCA
+    speakers_millions: 600
+    geographies:
+      - south_asia
+    colonial_power: UK
+    imposed_on:
+      - internal_linguistic_minorities
+    script: devanagari
+    orthography_politics: coexisting_scripts_and_politics
+  - id: qu
+    tier: L3_MARGINALIZED
+    speakers_millions: 8
+    geographies:
+      - andes
+    colonial_power: SPAIN
+    imposed_on: []
+    script: latin
+    orthography_politics: late_missionary_standardization
+    over_refusal_baseline_estimate: 0.6
+  - id: yo
+    tier: L3_MARGINALIZED
+    speakers_millions: 45
+    geographies:
+      - west_africa
+    colonial_power: UK
+    imposed_on: []
+    script: latin
+    orthography_politics: missionary_and_state_influence
+    over_refusal_baseline_estimate: 0.5
+
+parity_rules:
+  L1_HARD_GATE:
+    tier: L1_IMPERIAL
+    gap_metric_id: L1_PARITY_GAP
+    enforcement_category: HARD_GATE
+  L2_SOFT_WARNING:
+    tier: L2_REGIONAL_LINGUA_FRANCA
+    gap_metric_id: L2_PARITY_GAP
+    enforcement_category: SOFT_WARNING
+  L3_RECORD_AND_CRITIQUE:
+    tier: L3_MARGINALIZED
+    gap_metric_id: L3_PARITY_RECORD
+    enforcement_category: RECORD_AND_CRITIQUE
+
+reparations_framework:
+  l3_compute_budget_multiplier: 5.0
+  l3_benchmark_priority: high
+  l3_documentation_priority: high
+
+over_refusal_mitigation:
+  strategies:
+    - targeted_prompt_design_evaluation
+    - additional_safety_training_for_l3
+    - human_review_for_critical_l3_cases
+
+orthographic_justice:
+  cases:
+    - language_id: kk
+      script_history:
+        - arabic
+        - latin
+        - cyrillic
+      script_suppression_history: state_imposed_script_changes
+    - language_id: hy
+      script_history:
+        - armenian
+      script_suppression_history: targeted_script_suppression
+
+transfer_bounds:
+  reference_language: en
+  lipschitz_constant: 0.1
+  description: maximum_allowed_change_in_harm_rate_per_unit_parity_distance
