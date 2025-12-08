@@ -1,0 +1,56 @@
+dependencies:
+  - domains.yaml
+  - languages.yaml
+  - governance.yaml
+  - threat.yaml
+  - metrics.yaml
+  - standards.yaml
+  - tests.yaml
+  - models.yaml
+  - sources.yaml
+  - sanctions.yaml
+  - epistemology.yaml
+  - frameworks.yaml
+  - critique.yaml
+  - glossary.yaml
+  - graph.yaml
+  - dialectics.yaml
+  - emergence.yaml
+  - transcendence.yaml
+
+ontological_status: normative_regime_specification
+
+scope:
+  includes:
+    - harm_taxonomy
+    - normative_thresholds_for_models
+    - evaluation_procedures
+    - reporting_formats
+  excludes:
+    - deployment_decisions
+    - legislative_processes
+    - governance_of_all_ai_systems
+
+epistemic_commitments:
+  legal_positivism_modified: true
+  pro_homine_constraint: true
+  ordinal_harm_measurement_only: true
+  bayesian_uncertainty: true
+
+amendment_procedures:
+  proposal_channels:
+    - governance_bodies
+    - impacted_communities
+    - technical_maintainers
+  decision_rule: consensus_or_supermajority
+  recording: amendment_log_with_links_to_graph_nodes
+
+revolutionary_conditions:
+  trigger_conditions:
+    - core_tier0_norms_no_longer_reflect_practice
+    - governance_structure_loses_legitimacy
+    - persistent_mismatch_between_encoded_norms_and_observed_harms
+  effects:
+    - existing_standards_not_treated_as_binding
+    - full_refounding_process_outside_normal_amendment_path
+  automation: no_internal_mechanism_declares_revolution
