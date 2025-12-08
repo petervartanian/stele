@@ -17,6 +17,8 @@ Definition R_composite (rt rd og : R) : R :=
 
 Definition in_range (x : R) := 0 <= x <= 1.
 
+(* lemma_id: COMPOSITE_RISK_MONOTONE *)
+
 Lemma composite_risk_monotone_threat :
   forall rt1 rt2 rd og,
     in_range rt1 -> in_range rt2 ->
