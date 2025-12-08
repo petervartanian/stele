@@ -1,4 +1,4 @@
-# STELE Proofs
+# Proofs vis-à-vis the STELE
 
 This directory links formal proofs to the constitutional metrics and standards.
 
