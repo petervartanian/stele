@@ -1,0 +1,3 @@
+{"lemma_id": "ENSEMBLE_OR_FN_BOUND", "tool": "coq", "tool_version": null, "file": "coq/stele_ensembles.v", "status": "unverified", "commit": null, "timestamp": null}
+{"lemma_id": "L1_PARITY_GAP_BOUND", "tool": "coq", "tool_version": null, "file": "coq/stele_parity.v", "status": "unverified", "commit": null, "timestamp": null}
+{"lemma_id": "COMPOSITE_RISK_MONOTONE", "tool": "coq", "tool_version": null, "file": "coq/stele_risk.v", "status": "unverified", "commit": null, "timestamp": null}
