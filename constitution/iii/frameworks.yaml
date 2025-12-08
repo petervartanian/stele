@@ -1,0 +1,39 @@
+dependencies:
+  - governance.yaml
+  - domains.yaml
+
+ethical_frameworks:
+  utilitarianism:
+    justification: minimize_expected_harm
+    tension_with_system: may_justify_intrusive_measures
+  kantianism:
+    justification: respect_for_persons_as_ends
+    tension_with_system: strict_duties_conflict_with_probabilistic_balancing
+  capabilities_approach:
+    justification: protect_core_capabilities
+    tension_with_system: emphasizes_positive_freedoms
+  care_ethics:
+    justification: focus_on_relationships_and_vulnerability
+    tension_with_system: foregrounds_specific_contexts
+
+framework_conflicts:
+  - scenario: mass_surveillance_for_counterterrorism
+    utilitarianism: may_accept_if_expected_harm_reduction_is_high
+    kantianism: rejects_use_of_persons_as_means
+    capabilities_approach: critical_of_effect_on_political_participation
+    care_ethics: highlights_disproportionate_impact_on_targeted_groups
+    resolution: strong_presumption_against_mass_surveillance
+
+weighting_by_tier:
+  tier_0:
+    - kantianism
+    - capabilities_approach
+  tier_1:
+    - capabilities_approach
+    - utilitarianism
+    - care_ethics
+  tier_2:
+    - utilitarianism
+    - care_ethics
+  tier_3:
+    - utilitarianism
