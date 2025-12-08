@@ -1,0 +1,161 @@
+version: "1"
+
+ids:
+  - id: CBRNE
+    kind: domain_family
+    defined_in: constitution/i/domains.yaml
+    used_in:
+      - constitution/i/tests.yaml
+      - constitution/i/metrics.yaml
+      - constitution/ii/sanctions.yaml
+      - constitution/iv/dialectics.yaml
+    tags:
+      - tier0
+      - dual_use
+      - cbrne
+
+  - id: ELECTIONS_AND_DEMOCRACY
+    kind: domain_family
+    defined_in: constitution/i/domains.yaml
+    used_in:
+      - constitution/i/tests.yaml
+      - constitution/i/metrics.yaml
+      - constitution/i/governance.yaml
+      - constitution/iv/dialectics.yaml
+    tags:
+      - tier0
+      - democracy
+      - information
+
+  - id: TIER0_FALSE_NEGATIVE_RATE
+    kind: metric
+    defined_in: constitution/i/metrics.yaml
+    used_in:
+      - constitution/i/standards.yaml
+      - constitution/i/tests.yaml
+      - constitution/iv/dialectics.yaml
+    tags:
+      - tier0
+      - safety
+
+  - id: L1_PARITY_GAP
+    kind: metric
+    defined_in: constitution/i/metrics.yaml
+    used_in:
+      - constitution/i/standards.yaml
+      - constitution/i/tests.yaml
+      - constitution/iv/dialectics.yaml
+      - constitution/i/languages.yaml
+    tags:
+      - language_parity
+      - tier0
+
+  - id: STELE_CORE_V1
+    kind: standard
+    defined_in: constitution/i/standards.yaml
+    used_in:
+      - constitution/i/models.yaml
+      - constitution/iv/graph.yaml
+    tags:
+      - core
+      - tier0
+
+  - id: STELE_FULL_V1
+    kind: standard
+    defined_in: constitution/i/standards.yaml
+    used_in:
+      - constitution/i/models.yaml
+      - constitution/iv/dialectics.yaml
+    tags:
+      - full
+      - tier0
+      - tier1
+
+  - id: L0_ANCHOR
+    kind: language_tier
+    defined_in: constitution/i/languages.yaml
+    used_in:
+      - constitution/i/metrics.yaml
+      - constitution/i/tests.yaml
+    tags:
+      - reference_language
+
+  - id: L1_IMPERIAL
+    kind: language_tier
+    defined_in: constitution/i/languages.yaml
+    used_in:
+      - constitution/i/metrics.yaml
+      - constitution/i/tests.yaml
+      - constitution/iii/critique.yaml
+    tags:
+      - imperial
+      - colonial
+
+  - id: L3_MARGINALIZED
+    kind: language_tier
+    defined_in: constitution/i/languages.yaml
+    used_in:
+      - constitution/i/metrics.yaml
+      - constitution/i/tests.yaml
+      - constitution/iii/critique.yaml
+    tags:
+      - marginalized
+      - reparations
+
+  - id: ORG_TERROR
+    kind: threat_actor
+    defined_in: constitution/i/threat.yaml
+    used_in:
+      - constitution/i/tests.yaml
+    tags:
+      - non_state
+      - high_risk
+
+  - id: GLOBAL_CBRNE_ALERT
+    kind: overlay
+    defined_in: constitution/i/governance.yaml
+    used_in:
+      - constitution/i/tests.yaml
+      - constitution/i/metrics.yaml
+    tags:
+      - overlay
+      - cbrne
+
+  - id: STATE_CENTRISM
+    kind: critique
+    defined_in: constitution/iii/critique.yaml
+    used_in:
+      - constitution/iv/glossary.yaml
+      - constitution/iv/graph.yaml
+    tags:
+      - structural_critique
+
+  - id: COLONIAL_REPRODUCTION
+    kind: critique
+    defined_in: constitution/iii/critique.yaml
+    used_in:
+      - constitution/iv/glossary.yaml
+      - constitution/iv/graph.yaml
+      - constitution/i/languages.yaml
+    tags:
+      - colonialism
+      - language
+
+  - id: SOVEREIGNTY
+    kind: glossary_term
+    defined_in: constitution/iv/glossary.yaml
+    used_in:
+      - constitution/i/governance.yaml
+      - constitution/iii/meta.yaml
+      - constitution/v/transcendence.yaml
+    tags:
+      - political_concept
+
+  - id: AUTONOMOUS_WEAPONS_RESTRICTIONS
+    kind: emerging_norm
+    defined_in: constitution/iv/emergence.yaml
+    used_in:
+      - constitution/iv/graph.yaml
+    tags:
+      - emergence
+      - weapons
