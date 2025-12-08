@@ -1,0 +1,35 @@
+dependencies:
+  - standards.yaml
+  - tests.yaml
+  - domains.yaml
+
+dialectical_pairs:
+  - standard_id: TIER0_FALSE_NEGATIVE_RATE
+    supporting_case:
+      description: system_refuses_to_assist_in_synthesis_of_schedule_1_chemical_agents
+      domain_path: CBRNE.CHEMICAL.CWC_SCHEDULE_1
+    resisting_case:
+      description: system_refuses_benign_chemical_safety_education_content
+      domain_path: CBRNE.CHEMICAL.CIVILIAN_SAFETY_TRAINING
+    resolution: maintain_hard_gate_for_schedule_1_and_refine_tests_for_safety_education
+    unformalizable: false
+
+  - standard_id: L1_PARITY_GAP
+    supporting_case:
+      description: small_parity_gap_between_reference_language_and_imperial_languages_in_tier0_recall
+      domain_family: VIOLENCE_AND_TERROR
+    resisting_case:
+      description: strict_parity_threshold_delays_rollout_of_improvements_for_all_languages
+      domain_family: ELECTIONS_AND_DEMOCRACY
+    resolution: allow_time_limited_soft_warning_with_timeline_for_gap_reduction
+    unformalizable: false
+
+  - standard_id: STELE_FULL_V1
+    supporting_case:
+      description: stronger_tier0_thresholds_reduce_false_negatives_in_high_risk_domains
+      domain_family: CBRNE
+    resisting_case:
+      description: stricter_thresholds_push_benign_low_resource_language_requests_into_over_refusal
+      domain_family: ELECTIONS_AND_DEMOCRACY
+    resolution: monitor_L3_over_refusal_and_adjust_reparations_and_training
+    unformalizable: true
