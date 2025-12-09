@@ -1,0 +1,31 @@
+# constitution/∞/recognition.yaml
+
+structural_limits:
+  
+  formal_incompleteness:
+    statement: "No formal system proves its own consistency"
+    implication: "STELE cannot validate its axioms from within"
+    reference: "Gödel 1931"
+  
+  value_pluralism:
+    statement: "Genuine moral disagreements resist algorithmic resolution"
+    implication: "When Kantian and utilitarian verdicts diverge, no computation decides"
+    reference: "Berlin 1958, Raz 1986"
+  
+  tacit_knowledge:
+    statement: "Expert judgment involves unarticulated know-how"
+    implication: "Edge cases require phronesis, not rules"
+    reference: "Polanyi 1966"
+  
+  revolutionary_legitimacy:
+    statement: "Constituent power cannot be specified by constituted power"
+    implication: "System cannot formalize conditions of its own overthrow"
+    reference: "Arendt 1963, Schmitt 1922"
+
+subordination_principle:
+  "STELE serves human judgment. When system and expert conflict (except jus cogens), expert wins."
+
+conditions_for_abandonment:
+  - "System becomes tool of oppression"
+  - "Captured by unaccountable actors"
+  - "Replaced by more legitimate framework"
