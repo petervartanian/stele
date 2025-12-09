@@ -28,6 +28,16 @@ bis_entity_list:
       - federal_register_notice
 
 wassenaar_eccn:
+  category_0_nuclear:
+    - eccn: "0A001"
+      description: nuclear_reactors_and_equipment
+    - eccn: "0B001"
+      description: nuclear_fuel_fabrication_equipment
+    - eccn: "0C001"
+      description: source_and_special_fissionable_materials
+    - eccn: "0E001"
+      description: nuclear_technology_transfers
+  
   category_1_materials:
     - eccn: "1C350"
       description: precursor_chemicals_for_toxic_agents
@@ -35,16 +45,157 @@ wassenaar_eccn:
       description: certain_human_and_animal_pathogens_and_toxins
     - eccn: "1C353"
       description: genetically_modified_organisms_and_related_materials
+    - eccn: "1C354"
+      description: animal_pathogens
+    - eccn: "1C355"
+      description: plant_pathogens
+    - eccn: "1A004"
+      description: protective_and_detection_equipment_for_biological_agents
+    - eccn: "1B351"
+      description: toxic_gas_monitoring_systems_and_dedicated_components
+    - eccn: "1C111"
+      description: propellants_and_chemical_mixtures
+  
+  category_2_materials_processing:
+    - eccn: "2B350"
+      description: chemical_manufacturing_facilities_and_equipment
+    - eccn: "2B352"
+      description: biological_equipment_and_fermentation_systems
+    - eccn: "2D351"
+      description: software_for_controlled_chemical_or_biological_production
+  
   category_3_electronics:
     - eccn: "3A001"
       description: high_performance_electronic_components
+    - eccn: "3A991"
+      description: lower_tier_electronic_assemblies
+    - eccn: "3D001"
+      description: software_for_electronic_devices
+    - eccn: "3E001"
+      description: technology_for_electronic_devices
+  
+  category_4_computers:
+    - eccn: "4A003"
+      description: high_performance_computers
+    - eccn: "4A994"
+      description: general_purpose_computers
+    - eccn: "4D001"
+      description: software_for_information_security
+    - eccn: "4E001"
+      description: technology_for_computing_systems
+  
+  category_5_telecommunications:
+    - eccn: "5A001"
+      description: telecommunications_systems_and_equipment
+    - eccn: "5A002"
+      description: information_security_systems
+    - eccn: "5D002"
+      description: information_security_software
+    - eccn: "5E002"
+      description: information_security_technology
+  
+  category_6_sensors:
+    - eccn: "6A003"
+      description: cameras_and_optical_systems
+    - eccn: "6A005"
+      description: lasers_and_related_equipment
+    - eccn: "6A006"
+      description: magnetometers_and_gradiometers
+    - eccn: "6E001"
+      description: sensor_technology
+  
+  category_7_navigation:
+    - eccn: "7A003"
+      description: inertial_navigation_systems
+    - eccn: "7A103"
+      description: accelerometers_and_gyroscopes
+    - eccn: "7D003"
+      description: navigation_system_software
+    - eccn: "7E004"
+      description: navigation_technology
+  
+  category_8_marine:
+    - eccn: "8A001"
+      description: submersible_vehicles_and_surface_vessels
+    - eccn: "8A002"
+      description: marine_systems_and_equipment
+    - eccn: "8E001"
+      description: marine_technology
+  
+  category_9_aerospace:
+    - eccn: "9A004"
+      description: space_launch_vehicles_and_sounding_rockets
+    - eccn: "9A010"
+      description: aircraft_gas_turbine_engines
+    - eccn: "9A012"
+      description: unmanned_aerial_vehicles
+    - eccn: "9E003"
+      description: aerospace_technology
 
 domain_to_eccn_mapping:
+  - domain_path: CBRNE.NUCLEAR.FISSILE_MATERIAL
+    eccn_codes:
+      - "0A001"
+      - "0B001"
+      - "0C001"
+      - "0E001"
+  
   - domain_path: CBRNE.CHEMICAL.CWC_SCHEDULE_1
     eccn_codes:
       - "1C350"
       - "1C351"
+      - "1B351"
+      - "2B350"
+  
+  - domain_path: CBRNE.CHEMICAL.CWC_SCHEDULE_2
+    eccn_codes:
+      - "1C350"
+      - "2B350"
+  
   - domain_path: CBRNE.BIOLOGICAL.BWC_AGENTS
     eccn_codes:
       - "1C351"
       - "1C353"
+      - "1C354"
+      - "1C355"
+      - "1A004"
+      - "2B352"
+  
+  - domain_path: CBRNE.RADIOLOGICAL.DIRTY_BOMBS
+    eccn_codes:
+      - "0C001"
+  
+  - domain_path: CBRNE.EXPLOSIVES.IED_CONSTRUCTION
+    eccn_codes:
+      - "1C111"
+  
+  - domain_path: SANCTIONS_EXPORT_DUAL_USE.ADVANCED_COMPUTING
+    eccn_codes:
+      - "3A001"
+      - "3A991"
+      - "3D001"
+      - "4A003"
+      - "4A994"
+      - "4D001"
+  
+  - domain_path: SANCTIONS_EXPORT_DUAL_USE.TELECOMMUNICATIONS_SECURITY
+    eccn_codes:
+      - "5A001"
+      - "5A002"
+      - "5D002"
+  
+  - domain_path: SANCTIONS_EXPORT_DUAL_USE.SURVEILLANCE_TECH
+    eccn_codes:
+      - "6A003"
+      - "6A005"
+  
+  - domain_path: SANCTIONS_EXPORT_DUAL_USE.NAVIGATION_SYSTEMS
+    eccn_codes:
+      - "7A003"
+      - "7A103"
+  
+  - domain_path: SANCTIONS_EXPORT_DUAL_USE.AEROSPACE_PROPULSION
+    eccn_codes:
+      - "9A004"
+      - "9A010"
+      - "9A012"
